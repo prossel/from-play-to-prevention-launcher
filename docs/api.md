@@ -18,7 +18,7 @@ The agreed commands are:
 | `experience.ready` | Experience → launcher | Optional signal that application loading is complete |
 | `experience.completed` | Experience → launcher | Optional completion signal; does not automatically exit |
 
-Repeated hide/show requests should be harmless. An exit request uses the same cleanup path as the shell's Home button. No permission prompt or metadata declaration is needed for these commands.
+Repeated hide/show requests should be harmless. A valid exit request uses the same immediate cleanup path as the shell's “Accueil” button: remove the iframe and return home without a confirmation dialog or save-before-close handshake. Do not wait for application saving before closing. See [leaving is not pausing](specification.md#leaving-is-not-pausing) for progress responsibilities. No permission prompt or metadata declaration is needed for these commands.
 
 No additional launcher recovery control is provided when navigation is hidden. If an experience becomes stuck or its exit control fails, the player can refresh the launcher page or close and relaunch the installed PWA to return home. Restarting does not automatically reopen the experience or restore its in-memory state. The experience's own usable exit control remains required for normal operation.
 

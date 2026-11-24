@@ -1,5 +1,11 @@
 # Specification history
 
+## Immediate exit decision 2026-11-24
+
+- Confirmed immediate close through the same cleanup path for “Accueil” and valid experience exit requests, without confirmation or a save-before-close handshake in version 1.
+- Confirmed experience-owned saving during play and restoration on a fresh launch; the launcher does not wait for saving at exit.
+- Aligned the API, team checklist and acceptance checks, and removed the resolved exit-policy question.
+
 ## Theme preference decision 2026-11-24
 
 - Confirmed configured default or enabled automatic selection, with valid saved manual choices taking precedence when manual selection is allowed.

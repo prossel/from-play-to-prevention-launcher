@@ -109,6 +109,7 @@ For the first version, avoid caching external experience documents in the launch
 - If messaging is used, implement exact-origin validation and the agreed envelope.
 - Support standalone loading with sensible controls and no dependency on a parent frame.
 - Document progress persistence and any real hardware permissions.
+- Follow the confirmed [immediate-exit policy](specification.md#leaving-is-not-pausing): save during play if progress must persist. The launcher closes without confirmation or a save handshake; restore saved progress within the experience on a later launch.
 - Test the published version inside the launcher, not only the local development page.
 
 ## Runtime integration

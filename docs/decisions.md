@@ -18,7 +18,8 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Catalogue | Launcher references metadata endpoints; it does not need to merge team repositories. |
 | Publication | Push to a dedicated branch such as prod can trigger each site's deployment. |
 | Running apps | Iframe within the launcher; new-tab launch is only an optional fallback. |
-| Exit | Launcher provides Home by default. Experience can request exit through messages. |
+| Exit | “Accueil” and valid experience exit requests close immediately through the same cleanup path, without a confirmation dialog or save-before-close handshake in version 1. |
+| Progress on exit | Each experience saves during play if needed; reopening creates a fresh iframe and resumes only what the experience itself saved and restores. See [specification](specification.md#leaving-is-not-pausing). |
 | Navigation | Experience can request hide/show; no redundant immersive metadata capability. |
 | Recovery | No additional launcher recovery control when navigation is hidden. If stuck, refresh the launcher page or close and relaunch the installed PWA to return home. |
 | Unstable experiences | Keep known unstable experiences out of the launchable catalogue until fixed; no automatic stability-detection mechanism is required. |

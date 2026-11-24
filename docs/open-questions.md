@@ -33,7 +33,6 @@ Resolve these progressively in documentation before beginning implementation.
 - Which built-in apps are required? Camera, gallery and notes are examples only.
 - Is real camera access needed, or will simulated content suffice?
 - What progress should persist, and how will teams communicate that to players?
-- Is leaving immediate, or will a save-before-close protocol be needed?
 - Who supplies descriptions, categories, credits and any editorial mappings between experiences?
 
 ## Validation

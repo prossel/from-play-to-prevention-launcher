@@ -87,9 +87,11 @@ Only the active iframe may control launcher navigation. Reset navigation to visi
 
 ### Leaving is not pausing
 
-The first version closes the running application. Opening it again creates a fresh iframe. Progress resumes only if the application implements a suitable save mechanism. The launcher cannot automatically capture arbitrary application state.
+In version 1, activating “Accueil” or receiving a valid experience exit request closes the running application immediately through the same cleanup path. There is no confirmation dialog or save-before-close handshake, and the launcher does not wait for application saving before removing the iframe.
 
-Applications should save meaningful progress during play rather than rely on asynchronous work at exit. A future save-before-close handshake would require a separate agreed protocol and timeout policy.
+Opening the application again creates a fresh iframe. Progress resumes only from data the application itself saved and can restore. The launcher cannot automatically capture arbitrary application state. Applications that need progress persistence must save during play rather than rely on asynchronous work at exit. Unsaved in-memory progress is lost on close.
+
+A save-before-close handshake is outside version 1; introducing it later would require a separate agreed protocol and timeout policy.
 
 ### Recovery from a stuck experience
 
@@ -139,6 +141,8 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Experience requests a mode outside the intersection | Error reported; effective mode preserved |
 | No common non-fullscreen layout | Launch blocked with French feedback and a compatible-theme option where available |
 | Home while sound is playing | Iframe is removed and its document playback stops |
+| Player activates “Accueil” or experience sends a valid exit request | Same immediate cleanup and return home, without a confirmation dialog or waiting for a save handshake |
+| Experience is reopened after exit | Fresh iframe; progress resumes only from data saved and restored by the experience itself |
 | Immersive request after exit button is ready | Bar hides and content resizes |
 | App requests show or exit | Bar returns or home opens as requested |
 | Next application opens after immersive use | Navigation starts visible |
