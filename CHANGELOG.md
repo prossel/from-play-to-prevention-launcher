@@ -1,5 +1,12 @@
 # Specification history
 
+## Display defaults decision 2026-11-24
+
+- Confirmed initial common `theme`, otherwise common `page`; block incompatible launches and offer a compatible installed theme where available.
+- Confirmed fullscreen entry-failure fallback to common `page`, otherwise common `theme`, and restoration of the prior non-fullscreen layout on browser fullscreen exit.
+- Clarified iframe preservation across all display transitions and aligned decisions, API status, theme guidance and acceptance checks.
+- Removed the resolved display-defaults question while retaining pending-request and pre-existing fullscreen ownership questions.
+
 ## Recovery decision 2026-11-24
 
 - Confirmed that hidden navigation needs no additional launcher recovery control; refresh the launcher or close and relaunch the installed PWA if stuck.

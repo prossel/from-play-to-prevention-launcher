@@ -1,6 +1,6 @@
 # Launcher API
 
-Draft protocol before implementation. Product requirements are confirmed in decisions.md; envelope details, schema defaults and fallback ordering are proposed implementation choices. No API code is implemented in this repository.
+Protocol specification before implementation. Product requirements, including the initial display mode, common non-fullscreen layout requirement, fullscreen failure fallback and restoration rules, are confirmed in [decisions.md](decisions.md). Envelope details and schema defaults remain proposed implementation choices. No API code is implemented in this repository.
 
 ## Optional immersive mode
 
@@ -55,7 +55,7 @@ availableModes = commonModes filtered by current browser support and policy
 
 Needing user activation does not remove `fullscreen` from available modes: it changes how the request is fulfilled. A known lack of Fullscreen API support or a policy restriction makes that control unavailable. Unexpected runtime rejection still requires a reported fallback.
 
-There must be a common non-fullscreen layout (`theme` or `page`) for launch and recovery. An experience and theme may each support only a subset of modes, but an intersection containing only `fullscreen` is insufficient because users can always leave native fullscreen. Prefer `theme` when it is common, otherwise `page`; this also sets the initial mode. If neither is common, do not force an unsupported layout: keep the launcher home available, show French incompatibility feedback and offer a compatible installed theme if one exists. Do not silently switch themes during play.
+The confirmed launch rule requires a common non-fullscreen layout (`theme` or `page`). An experience and theme may each support only a subset of modes, but an intersection containing only `fullscreen` is insufficient because users can always leave native fullscreen. Start in `theme` when it is common, otherwise `page`. If neither is common, block launch: keep the launcher home available, show French incompatibility feedback and offer a compatible installed theme if one exists. Do not silently switch themes during play.
 
 Both callers use the core's display manager:
 
@@ -144,9 +144,11 @@ For changes initiated outside the experience request flow, such as the browser's
 
 ### Fullscreen transitions and restoration
 
+The initial mode, fullscreen entry-failure fallback, restoration on browser exit and iframe preservation rules below are confirmed. Pending-request arbitration and pre-existing launcher fullscreen ownership remain [open questions](open-questions.md#display-api).
+
 - Start each experience with navigation visible in its negotiated initial mode: common `theme`, otherwise common `page`. Support declarations constrain both theme and experience requests.
 - Validate source window, origin, session, request ID, message shape and allowed mode using the same safeguards as other API messages.
-- Apply supported `theme` and `page` modes without reloading, recreating or navigating the iframe. Notify the experience after state changes; applications must handle normal viewport resizing.
+- Preserve the running iframe throughout all display transitions, including fullscreen entry, failure and exit: do not reload, recreate or navigate it. Notify the experience after state changes; applications must handle normal viewport resizing.
 - Treat an incoming `postMessage` as a request, not a guaranteed browser user gesture. Native fullscreen requires transient user activation. If the parent lacks it, show the launcher-owned activation button and invoke `requestFullscreen()` directly inside its click handler, without awaiting unrelated asynchronous work first.
 - Keep that activation button reachable even when normal launcher navigation is hidden. It can be a temporary control; dismissing it leaves the experience in its negotiated non-fullscreen fallback.
 - Check browser support and policy, handle the request promise rejection, and use `fullscreenchange` plus `document.fullscreenElement` to track actual fullscreen state. Never announce `fullscreen` before native entry succeeds.

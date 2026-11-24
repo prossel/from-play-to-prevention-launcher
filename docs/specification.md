@@ -102,6 +102,8 @@ The launcher may be installable as a PWA. Start with a web app manifest requesti
 
 Implement native fullscreen through the display API in [display and navigation API](api.md), using the launcher root containing both the experience area and launcher controls. Do not require fullscreen for core use. Support is negotiated between theme and experience. When `page` or `fullscreen` is common, the theme must honour expansion; a phone outline is not a mandatory constraint on desktop.
 
+The [initial display rules](api.md#supported-modes-and-launcher-mediation) and [fullscreen failure fallback and restoration rules](api.md#fullscreen-transitions-and-restoration) are confirmed requirements. All display transitions preserve the running iframe and remain independent of navigation visibility.
+
 Use responsive viewport units and safe-area handling as appropriate. Test mobile browser toolbar changes, rotation and the software keyboard. An installed launcher does not automatically make external experiences available offline. Offline packaging and update coordination remain separate work.
 
 ## State, persistence and future interactions
@@ -117,6 +119,7 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Built-in and external apps appear together | One consistent catalogue and opening behaviour |
 | App with no integration code | Runs in a common non-fullscreen mode with navigation visible; absent metadata support defaults to `theme` |
 | Theme and experience advertise different support | Controls reflect the intersection and browser availability |
+| Launch with a common non-fullscreen layout | Start in common `theme`, otherwise common `page`; never require fullscreen to launch |
 | Theme button changes mode | Core validates it; theme and experience receive the same effective state |
 | Experience requests a mode outside the intersection | Error reported; effective mode preserved |
 | No common non-fullscreen layout | Launch blocked with French feedback and a compatible-theme option where available |
@@ -132,6 +135,7 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Fullscreen request lacks user activation | Common non-fullscreen layout retained, `pending` reported and accessible activation control offered |
 | Native fullscreen unsupported or rejected | Common `page`, otherwise common `theme`, remains usable; explicit fallback notification sent |
 | User exits native fullscreen | Prior non-fullscreen layout restored and state notification sent |
+| Any display transition, including fullscreen entry, failure or exit | Existing iframe document and application state preserved; navigation visibility unchanged |
 | Experience exits after requesting fullscreen | Experience-owned fullscreen and pending requests cleaned up |
 | One manifest or icon is unavailable | Other experiences remain usable |
 | Embedded page is blocked or never becomes ready | Navigation remains visible unless the experience has validly requested hiding it; loading feedback does not block Home; iframe load alone is not proof of success |

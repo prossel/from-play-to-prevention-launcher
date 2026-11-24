@@ -20,7 +20,6 @@ Resolve these progressively in documentation before beginning implementation.
 ## Display API
 
 - Validate schema fields, request IDs, availability notification timing and legacy defaults.
-- Confirm common non-fullscreen layout requirement, initial mode priority and fallback ordering.
 - Define who may change declarations dynamically, if required; current draft assumes static declarations.
 - Define UI treatment when one caller changes the mode while the other has a pending request.
 - Validate user-activation handling and ownership when the launcher is already in native fullscreen.

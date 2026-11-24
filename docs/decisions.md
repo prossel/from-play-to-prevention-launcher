@@ -22,10 +22,12 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Unstable experiences | Keep known unstable experiences out of the launchable catalogue until fixed; no automatic stability-detection mechanism is required. |
 | Display | Theme frame, full client page and native browser fullscreen are distinct modes. |
 | Display support | Both theme and experience declare supported modes. |
+| Initial display | Start in common `theme`, otherwise common `page`. If neither is shared, block launch and offer a compatible installed theme where available. See [API](api.md#supported-modes-and-launcher-mediation). |
+| Fullscreen fallback | If fullscreen entry fails, use common `page`, otherwise common `theme`. Leaving fullscreen restores the previous common non-fullscreen layout. See [API](api.md#fullscreen-transitions-and-restoration). |
 | Display control | Theme controls and experience requests are mediated by one core manager. |
 | Availability | Core supplies compatible modes; theme can hide or disable unavailable controls. |
 | State preservation | Changing display mode must not reload the experience. |
 | Browser limits | Native fullscreen is conditional; effective state and fallback must be explicit. |
 | Future interactions | Shared notes/gallery and cross-app story state are possible, not yet specified. |
 
-API names, message envelopes, session tokens, metadata defaults, selection configuration and exact fallback ordering are draft technical proposals documented in their respective contracts. They can be refined without revisiting the product decisions above.
+API names, message envelopes, session tokens, metadata defaults and selection configuration are draft technical proposals documented in their respective contracts. They can be refined without revisiting the product decisions above. Initial display selection, the common non-fullscreen layout requirement and fullscreen failure fallback and restoration ordering are confirmed; pending-request arbitration and pre-existing launcher fullscreen ownership remain open.

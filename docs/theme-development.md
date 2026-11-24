@@ -29,7 +29,7 @@ Prefer applying selection on the home screen. Do not replace or restart an activ
 
 Theme controls and experience messages use the same core display manager. Neither caller overrides the other's support declaration. The launcher computes the intersection, applies browser constraints and reports the effective mode to both parties. Unsupported requests preserve the current layout.
 
-The detailed common non-fullscreen launch requirement and fallback order in api.md are proposed baseline behaviours for review. If an alternative is adopted, update the one authoritative API document and its corresponding acceptance checks.
+The common non-fullscreen launch requirement, initial mode priority and fullscreen failure fallback and restoration order are confirmed in [api.md](api.md#supported-modes-and-launcher-mediation). Themes must honour these rules through core state and actions.
 
 ## Exploration assets
 
