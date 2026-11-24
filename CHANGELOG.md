@@ -1,5 +1,12 @@
 # Specification history
 
+## Theme preference decision 2026-11-24
+
+- Confirmed configured default or enabled automatic selection, with valid saved manual choices taking precedence when manual selection is allowed.
+- Confirmed device-local preference persistence and “Réinitialiser le thème” to clear it and resume configured selection.
+- Defined fallback to configured selection for unavailable storage or an unavailable choice, retaining home-only theme switching.
+- Aligned the proposed architecture configuration, decisions, theme guidance and acceptance checks; left storage technology and viewport rules open.
+
 ## Theme switching decision 2026-11-24
 
 - Confirmed theme selection and switching on the home screen, keeping the active theme throughout a running experience.

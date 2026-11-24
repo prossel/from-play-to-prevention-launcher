@@ -146,7 +146,9 @@ A proposed optional `public/launcher.json` keeps presentation settings separate 
 }
 ```
 
-This example demonstrates the configuration shape, not a chosen design. `selection` may be `fixed`, `automatic` or `manual`. In fixed mode use the default; in manual mode use a valid saved choice or the default; in automatic mode prefer a valid explicit choice when manual selection is enabled, otherwise use the viewport mapping and then the default. The registry validates every ID against the installed themes. A missing or invalid choice falls back to a valid default theme.
+This example demonstrates a proposed configuration shape, not a chosen design or final schema. `selection` may be `fixed`, `automatic` or `manual`. The schema must express the confirmed [theme preference rules](specification.md#theme-preferences): when manual selection is enabled, prefer a valid saved choice; otherwise use automatic viewport mapping when enabled, then a valid default. Without a valid saved choice, fixed and manual modes use the default. Validate every ID against installed and enabled themes. An unavailable saved choice or unavailable preference storage returns to configured selection, including automatic mapping when enabled, rather than always jumping directly to the default.
+
+Remember manual choices on the device and provide “Réinitialiser le thème” through shared launcher actions to clear the preference and resume configured selection. The storage mechanism remains undecided.
 
 Define compact/wide using a documented viewport rule in `selection.js`, not browser-name detection. The breakpoint and reevaluation timing on the home screen remain open. Regardless of the eventual selection configuration, follow the confirmed [theme selection during play](specification.md#theme-selection-during-play) policy: apply theme selection only at home, keep the active theme while an experience runs and defer any requested switch until returning home. Viewport changes adapt the active theme's responsive layout while preserving the same iframe document and application state.
 

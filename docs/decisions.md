@@ -9,7 +9,8 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Languages | English development and technical documentation; French product controls and content. Preserve supplied experience titles. |
 | Presentation | Modular themes; phone is optional. No graphic identity selected. |
 | Devices | Responsive mobile and desktop use. |
-| Theme choice | Allow configured default, automatic preselection and/or manual selection; final policy remains open. |
+| Theme choice | Use the configured default unless automatic selection is enabled; a valid saved manual choice takes precedence when manual selection is allowed. See [theme preferences](specification.md#theme-preferences). |
+| Theme preference | Remember manual choices on the device. “Réinitialiser le thème” clears the preference; unavailable storage or an unavailable choice falls back to configured selection. |
 | Theme switching | Select and switch themes at home. Keep the active theme during play; adapt it to viewport changes while preserving the iframe, and defer requested theme switches until home. See [specification](specification.md#theme-selection-during-play). |
 | Launcher ownership | Separate repository, GitHub Pages deployment, optional dedicated domain. |
 | Experience ownership | Independent team repositories and independently deployed static web applications. |
@@ -31,4 +32,4 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Browser limits | Native fullscreen is conditional; effective state and fallback must be explicit. |
 | Future interactions | Shared notes/gallery and cross-app story state are possible, not yet specified. |
 
-API names, message envelopes, session tokens, metadata defaults and selection configuration are draft technical proposals documented in their respective contracts. They can be refined without revisiting the product decisions above. Initial display selection, the common non-fullscreen layout requirement and fullscreen failure fallback and restoration ordering are confirmed; pending-request arbitration and pre-existing launcher fullscreen ownership remain open.
+API names, message envelopes, session tokens, metadata defaults and the selection configuration schema are draft technical proposals documented in their respective contracts. They can be refined without revisiting the product decisions above. Theme preference precedence, device-local persistence and reset behaviour are confirmed; the storage mechanism remains undecided. Initial display selection, the common non-fullscreen layout requirement and fullscreen failure fallback and restoration ordering are confirmed; pending-request arbitration and pre-existing launcher fullscreen ownership remain open.

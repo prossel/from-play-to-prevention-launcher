@@ -21,7 +21,7 @@ See [architecture.md](architecture.md) for the proposed source layout and [api.m
 
 ## Selection
 
-Architecture must allow a configured theme, automatic mobile/desktop preselection, manual selection, or automatic preselection with manual override. These are selection policies, not separate responsive layouts. Each installed theme must work across viewport sizes. Default selection, automatic/manual precedence, breakpoint and persistence behaviour remain to be decided.
+Architecture must allow a configured theme, automatic mobile/desktop preselection, manual selection, or automatic preselection with manual override. These are selection policies, not separate responsive layouts. Each installed theme must work across viewport sizes. Follow the confirmed [theme preference rules](specification.md#theme-preferences) through shared launcher actions: remember allowed manual choices, give valid saved choices precedence and offer “Réinitialiser le thème”. Resetting or an unavailable preference returns to configured selection. The initial theme, viewport breakpoint and storage mechanism remain undecided.
 
 Follow the confirmed [theme selection during play](specification.md#theme-selection-during-play) policy: select and switch themes only on the home screen. Keep the active theme throughout an experience and defer any requested switch until returning home. Viewport changes must adapt the active theme without replacing it or reloading, recreating or navigating the iframe. Display-mode changes remain available through the core within the same active theme.
 

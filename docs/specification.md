@@ -55,11 +55,19 @@ In this optional theme, the phone is the interaction area. The surrounding page 
 - Reserve space for real mobile safe areas and accommodate the on-screen keyboard.
 - Preserve a coherent launcher identity without forcing applications to copy its visual style.
 
+## Theme preferences
+
+Use the configured default theme unless automatic selection is enabled. Automatic selection uses the configured viewport mapping, falling back to the default when no valid mapping is available.
+
+When manual selection is allowed, remember the player's chosen theme on that device for later visits. A valid saved choice takes precedence over automatic selection. Offer “Réinitialiser le thème” to clear that preference and return to configured selection: automatic when enabled, otherwise the default.
+
+If preference storage is unavailable or the chosen theme is no longer available, fall back to configured selection. Validate choices against the installed and enabled themes. These rules do not choose a storage technology, initial theme or viewport breakpoint.
+
 ## Theme selection during play
 
 The selected theme stays active for the entire running experience. Viewport changes, including resizing and rotation, adapt that theme's responsive layout without replacing the theme or reloading, recreating or navigating the iframe. Any requested theme switch is deferred until the player returns home; it does not close the experience automatically.
 
-Theme switching is separate from changing display mode within the active theme. The core continues to mediate display-mode requests through [api.md](api.md). Default selection, automatic/manual precedence, persistence and the compact/wide rule remain open; none may replace a theme during play.
+Theme switching is separate from changing display mode within the active theme. The core continues to mediate display-mode requests through [api.md](api.md). The [theme preference rules](#theme-preferences), including resetting a preference, apply theme changes only at home. The compact/wide rule and automatic reevaluation timing at home remain open.
 
 ## Opening, running and leaving an application
 
@@ -151,6 +159,10 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Desktop viewport is short or narrow | Launcher remains usable; active theme adapts |
 | Viewport changes during an experience | Same theme and iframe remain active; responsive layout adapts without restarting the experience |
 | Theme switch requested during play | Current experience continues in the same theme; switch applies only after returning home |
+| No saved choice, or manual selection disabled | Configured automatic selection applies when enabled; otherwise use the default theme |
+| Player returns with a valid saved choice and manual selection allowed | Remembered theme takes precedence over automatic selection |
+| Player activates “Réinitialiser le thème” | Saved preference is cleared; configured selection resumes, with any theme change deferred until home |
+| Preference storage unavailable or saved theme no longer available | Launcher remains usable through configured selection: automatic when enabled, otherwise default |
 | App is opened directly | Standalone interface still works |
 
 Test representative iOS Safari, Android Chrome and desktop browsers, in browser mode and installed mode where supported. Include at least one local app and one genuinely cross-origin app. Test iframe errors explicitly: a load event alone is not reliable evidence that an application successfully rendered. Apps without a ready signal need non-blocking loading feedback and an accessible way home.

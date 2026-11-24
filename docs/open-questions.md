@@ -14,7 +14,7 @@ Resolve these progressively in documentation before beginning implementation.
 
 - Which initial themes should be implemented? Compare sketches before selecting visual design.
 - What are the exact module hooks, action injection and state subscription signatures?
-- How should default, automatic selection and manual overrides interact, persist and reset?
+- Which storage mechanism should retain the device-local theme preference? Precedence, persistence intent, reset and fallback behaviour are confirmed in [theme preferences](specification.md#theme-preferences).
 - What viewport rule selects compact versus wide, and when should automatic theme selection be reevaluated on the home screen? Theme replacement during play is ruled out by the confirmed [theme-switching policy](specification.md#theme-selection-during-play).
 
 ## Display API
