@@ -10,6 +10,7 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Presentation | Modular themes; phone is optional. No graphic identity selected. |
 | Devices | Responsive mobile and desktop use. |
 | Theme choice | Allow configured default, automatic preselection and/or manual selection; final policy remains open. |
+| Theme switching | Select and switch themes at home. Keep the active theme during play; adapt it to viewport changes while preserving the iframe, and defer requested theme switches until home. See [specification](specification.md#theme-selection-during-play). |
 | Launcher ownership | Separate repository, GitHub Pages deployment, optional dedicated domain. |
 | Experience ownership | Independent team repositories and independently deployed static web applications. |
 | Built-in apps | Launcher may host apps in subfolders using the same metadata and iframe contract. |

@@ -148,7 +148,7 @@ A proposed optional `public/launcher.json` keeps presentation settings separate 
 
 This example demonstrates the configuration shape, not a chosen design. `selection` may be `fixed`, `automatic` or `manual`. In fixed mode use the default; in manual mode use a valid saved choice or the default; in automatic mode prefer a valid explicit choice when manual selection is enabled, otherwise use the viewport mapping and then the default. The registry validates every ID against the installed themes. A missing or invalid choice falls back to a valid default theme.
 
-Define compact/wide using a documented viewport rule in `selection.js`, not browser-name detection. Allow each theme to respond to any viewport. Decide the initial automatic theme on the home screen; do not remount a running experience when the viewport changes. A manual theme switch during play should be deferred until home, preserving the active application's lifecycle.
+Define compact/wide using a documented viewport rule in `selection.js`, not browser-name detection. The breakpoint and reevaluation timing on the home screen remain open. Regardless of the eventual selection configuration, follow the confirmed [theme selection during play](specification.md#theme-selection-during-play) policy: apply theme selection only at home, keep the active theme while an experience runs and defer any requested switch until returning home. Viewport changes adapt the active theme's responsive layout while preserving the same iframe document and application state.
 
 ### Source paths and published paths
 

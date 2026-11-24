@@ -1,5 +1,11 @@
 # Specification history
 
+## Theme switching decision 2026-11-24
+
+- Confirmed theme selection and switching on the home screen, keeping the active theme throughout a running experience.
+- Confirmed responsive adaptation within that theme while preserving the iframe, with requested theme switches deferred until returning home.
+- Aligned architecture, theme guidance and acceptance checks; kept selection precedence, persistence, breakpoint and home-screen reevaluation timing open.
+
 ## Display defaults decision 2026-11-24
 
 - Confirmed initial common `theme`, otherwise common `page`; block incompatible launches and offer a compatible installed theme where available.

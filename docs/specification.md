@@ -20,6 +20,7 @@ The agreed foundation is:
 - Each theme adapts to mobile and desktop; the fictional phone is one optional theme.
 - Theme selection may use a configured default, automatic preselection, manual selection, or automatic preselection with a manual override.
 - Responsive adaptation is required within each theme and is independent of theme selection.
+- Select and switch themes on the home screen. Keep the active theme throughout an experience; apply any theme switch requested during play only after returning home.
 - Each experience opens in an iframe inside that interface.
 - The launcher owns a navigation bar outside the iframe, with an always-available Home action by default.
 - An experience may request that the bar be hidden once its own exit control is ready. No immersive capability declaration is required in metadata.
@@ -53,6 +54,12 @@ In this optional theme, the phone is the interaction area. The surrounding page 
 - Do not make hover, a hidden gesture or a keyboard shortcut the only way to complete a task.
 - Reserve space for real mobile safe areas and accommodate the on-screen keyboard.
 - Preserve a coherent launcher identity without forcing applications to copy its visual style.
+
+## Theme selection during play
+
+The selected theme stays active for the entire running experience. Viewport changes, including resizing and rotation, adapt that theme's responsive layout without replacing the theme or reloading, recreating or navigating the iframe. Any requested theme switch is deferred until the player returns home; it does not close the experience automatically.
+
+Theme switching is separate from changing display mode within the active theme. The core continues to mediate display-mode requests through [api.md](api.md). Default selection, automatic/manual precedence, persistence and the compact/wide rule remain open; none may replace a theme during play.
 
 ## Opening, running and leaving an application
 
@@ -142,6 +149,8 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Team deploys an update | Available on a later launch after normal cache revalidation; no live interruption |
 | Mobile keyboard or orientation changes | Controls and exit remain reachable |
 | Desktop viewport is short or narrow | Launcher remains usable; active theme adapts |
+| Viewport changes during an experience | Same theme and iframe remain active; responsive layout adapts without restarting the experience |
+| Theme switch requested during play | Current experience continues in the same theme; switch applies only after returning home |
 | App is opened directly | Standalone interface still works |
 
 Test representative iOS Safari, Android Chrome and desktop browsers, in browser mode and installed mode where supported. Include at least one local app and one genuinely cross-origin app. Test iframe errors explicitly: a load event alone is not reliable evidence that an application successfully rendered. Apps without a ready signal need non-blocking loading feedback and an accessible way home.
