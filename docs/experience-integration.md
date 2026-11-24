@@ -60,6 +60,8 @@ Fetch catalogue entries independently. One invalid or unreachable manifest must 
 
 Keep known unstable experiences out of the launchable catalogue until fixed. This is a maintenance responsibility; no automated stability detection or quarantine system is specified. For a session that becomes stuck, use the [launcher recovery policy](specification.md#recovery-from-a-stuck-experience).
 
+For experience startup, follow the confirmed [loading feedback and failure policy](specification.md#loading-feedback-and-failures). Integration messaging is optional: `experience.ready` clears the launcher loading indicator, but experiences without it remain usable. Dismissing the indicator after a short delay does not certify success or mark the experience as failed. Identified loading failures offer “Réessayer” and “Accueil”.
+
 ## Hosting and browser boundaries
 
 ### Embedding and metadata access are separate

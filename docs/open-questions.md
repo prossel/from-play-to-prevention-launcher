@@ -37,6 +37,7 @@ Resolve these progressively in documentation before beginning implementation.
 
 ## Validation
 
+- What short delay should dismiss loading feedback when no `experience.ready` arrives? The [loading policy](specification.md#loading-feedback-and-failures) is confirmed; this timing must not become a success or failure test.
 - Define supported devices and browsers, accessibility target and first-version acceptance criteria.
 - Exercise integration with at least one local and one genuinely cross-origin application.
 - Check catalogue growth, long titles, keyboard operation, browser Back and native fullscreen exit.

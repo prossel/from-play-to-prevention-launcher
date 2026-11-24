@@ -15,10 +15,12 @@ The agreed commands are:
 | `launcher.navigation.hide` | Experience → launcher | Hide the navigation bar and expand the iframe |
 | `launcher.navigation.show` | Experience → launcher | Restore the navigation bar |
 | `experience.exit` | Experience → launcher | Remove the iframe and return home |
-| `experience.ready` | Experience → launcher | Optional signal that application loading is complete |
+| `experience.ready` | Experience → launcher | Optional signal that application loading is complete; clears the launcher loading indicator |
 | `experience.completed` | Experience → launcher | Optional completion signal; does not automatically exit |
 
 Repeated hide/show requests should be harmless. A valid exit request uses the same immediate cleanup path as the shell's “Accueil” button: remove the iframe and return home without a confirmation dialog or save-before-close handshake. Do not wait for application saving before closing. See [leaving is not pausing](specification.md#leaving-is-not-pausing) for progress responsibilities. No permission prompt or metadata declaration is needed for these commands.
+
+`experience.ready` is optional application readiness, not a mandatory protocol acknowledgement. It clears the loading indicator only when it passes normal active-session validation. Without it, the launcher dismisses the indicator after a short delay without asserting success or failure; see [loading feedback and failures](specification.md#loading-feedback-and-failures). Experiences without messaging still run. This does not resolve the separate handshake acknowledgement and retry design.
 
 No additional launcher recovery control is provided when navigation is hidden. If an experience becomes stuck or its exit control fails, the player can refresh the launcher page or close and relaunch the installed PWA to return home. Restarting does not automatically reopen the experience or restore its in-memory state. The experience's own usable exit control remains required for normal operation.
 

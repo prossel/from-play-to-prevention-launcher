@@ -85,6 +85,16 @@ Remove the iframe rather than merely covering or hiding it; otherwise its sounds
 
 Only the active iframe may control launcher navigation. Reset navigation to visible for every new launch and whenever an iframe is reloaded or navigates to a new document. Applications should normally keep internal navigation within the same document; reloading requires a new integration handshake.
 
+### Loading feedback and failures
+
+Show non-blocking “Chargement…” feedback when opening an experience, with “Accueil” available. A valid optional `experience.ready` message from the active iframe clears the loading indicator. Messaging integration is not required to run an experience.
+
+If no ready signal arrives, dismiss the indicator after a short delay without claiming that the experience loaded successfully. Keep the iframe running; neither the absence of a ready signal nor expiration of that delay is a loading failure. The exact delay remains to be chosen. An iframe load event alone is not proof that the experience rendered successfully.
+
+When a loading failure can be identified, show French feedback such as “Impossible de charger cette expérience.” with “Réessayer” and “Accueil”. Retry starts a fresh launch attempt using the normal lifecycle and cleanup rules. Do not promise automatic detection of every blocked or failed embedded page. If the experience becomes stuck without a detectable failure, use the [recovery policy](#recovery-from-a-stuck-experience).
+
+Loading feedback never blocks Home or adds a permanent recovery control. Navigation starts visible; an experience may still hide it under the normal [navigation contract](api.md#optional-immersive-mode).
+
 ### Leaving is not pausing
 
 In version 1, activating “Accueil” or receiving a valid experience exit request closes the running application immediately through the same cleanup path. There is no confirmation dialog or save-before-close handshake, and the launcher does not wait for application saving before removing the iframe.
@@ -157,6 +167,10 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Any display transition, including fullscreen entry, failure or exit | Existing iframe document and application state preserved; navigation visibility unchanged |
 | Experience exits after requesting fullscreen | Experience-owned fullscreen and pending requests cleaned up |
 | One manifest or icon is unavailable | Other experiences remain usable |
+| Experience launch starts | Non-blocking “Chargement…” shown with “Accueil” available |
+| Active experience sends a valid `experience.ready` | Loading indicator clears |
+| No ready signal arrives | Indicator clears after a short delay without declaring success or failure; iframe remains running |
+| Loading failure is identified | French error feedback offers “Réessayer” for a fresh launch attempt and “Accueil” |
 | Embedded page is blocked or never becomes ready | Navigation remains visible unless the experience has validly requested hiding it; loading feedback does not block Home; iframe load alone is not proof of success |
 | Team deploys an update | Available on a later launch after normal cache revalidation; no live interruption |
 | Mobile keyboard or orientation changes | Controls and exit remain reachable |

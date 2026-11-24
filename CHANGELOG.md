@@ -1,5 +1,12 @@
 # Specification history
 
+## Loading feedback decision 2026-11-24
+
+- Confirmed non-blocking “Chargement…” with “Accueil” available, cleared by optional `experience.ready` or after a short delay without claiming successful loading.
+- Kept messaging optional and distinguished indicator dismissal from failure detection and protocol acknowledgement.
+- Confirmed French feedback with “Réessayer” and “Accueil” for identified loading failures; aligned API, integration guidance and acceptance checks.
+- Left the exact loading-indicator delay open.
+
 ## Immediate exit decision 2026-11-24
 
 - Confirmed immediate close through the same cleanup path for “Accueil” and valid experience exit requests, without confirmation or a save-before-close handshake in version 1.
