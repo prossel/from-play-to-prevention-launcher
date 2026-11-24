@@ -28,7 +28,6 @@ Array order determines the initial icon order. Read each URL relative to the fet
   "schemaVersion": 1,
   "id": "parallel-group-chat",
   "title": "Le groupe parallèle",
-  "description": "Une histoire de groupe, de captures et de choix.",
   "icon": "./icon.png",
   "entry": "./index.html",
   "language": "fr",
@@ -41,7 +40,7 @@ Array order determines the initial icon order. Read each URL relative to the fet
 | --- | --- | --- |
 | `schemaVersion` | Required | Metadata schema version; currently `1` |
 | `id` | Required | Stable English identifier, unique across the catalogue |
-| `title` | Required | French display title |
+| `title` | Required | Supplied experience title, preserved exactly even when in English |
 | `description` | Optional | Short French summary |
 | `icon` | Required | Relative or absolute URL to a square icon; SVG or PNG recommended |
 | `entry` | Required | Relative or absolute URL to the published application page |
@@ -58,6 +57,8 @@ Only catalogue-approved applications should load. Validate metadata, reject dupl
 ### Failure behaviour
 
 Fetch catalogue entries independently. One invalid or unreachable manifest must not prevent other applications from appearing. Show French feedback such as “Cette expérience est indisponible pour le moment.” with a retry action. Use a fallback icon when only the icon is missing. Unsupported metadata must be reported clearly to maintainers.
+
+Keep known unstable experiences out of the launchable catalogue until fixed. This is a maintenance responsibility; no automated stability detection or quarantine system is specified. For a session that becomes stuck, use the [launcher recovery policy](specification.md#recovery-from-a-stuck-experience).
 
 ## Hosting and browser boundaries
 
@@ -80,7 +81,7 @@ Camera or microphone access, if actually required, needs explicit feature-permis
 ### Independent experience deployment
 
 1. Each team chooses its stack and maintains its own repository.
-2. A push to `prod` triggers its GitHub Actions deployment workflow.
+2. A push to the team's chosen publication branch (for example, `prod`) can trigger its GitHub Actions deployment workflow; the branch and publishing method remain to be selected.
 3. The workflow builds if needed and publishes the static output to GitHub Pages.
 4. The published output includes `experience.json`, its icon and the entry page.
 5. The stable metadata URL is registered once in the launcher catalogue.

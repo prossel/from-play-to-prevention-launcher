@@ -1,5 +1,19 @@
 # Specification history
 
+## Recovery decision 2026-11-24
+
+- Confirmed that hidden navigation needs no additional launcher recovery control; refresh the launcher or close and relaunch the installed PWA if stuck.
+- Specified restart at home without automatically reopening the experience, while retaining the normal experience-owned exit requirement.
+- Kept known unstable experiences out of the launchable catalogue until fixed, without adding automatic stability detection.
+- Updated the API, product acceptance checks, integration and theme guidance, and removed the resolved recovery-control question.
+
+## Workspace review 2026-11-24
+
+- Recorded existing local Git history on `main`, no configured remote and the requirement for separate authorisation of further commits and publication.
+- Clarified that metadata preserves supplied titles, including English titles, and removed an unsupplied content summary from the named experience example.
+- Kept `prod` as a deployment example rather than a selected publication branch.
+- Identified unresolved recovery-control, handshake, request-arbitration and pre-existing fullscreen behaviour in the open questions without confirming new protocol decisions.
+
 ## Consolidated starter 2026-11-24
 
 - Collected the current specification into topic-based canonical Markdown documents.

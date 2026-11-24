@@ -27,17 +27,11 @@ Open this extracted folder as the workspace. AGENTS.md gives the working constra
 
 ## Git and GitHub
 
-This ZIP contains a clean working folder with .gitignore, not a hidden .git history or an existing GitHub remote. Initialise locally when ready:
+Local Git is already initialised on `main` and contains an initial commit. At the workspace review on 24 November 2026, no Git remote was configured. Repository owner, name and visibility remain undecided.
 
-```sh
-git init -b main
-git add .
-git commit -m "Add launcher specification and theme explorations"
-```
+Further commits, remote repository creation and publication require separate user authorisation. Use the actual repository URL once selected; do not infer it from the project name.
 
-Use your own configured Git identity. After creating an empty GitHub repository, copy its actual remote URL, add it with git remote add origin, then push main. Codex can assist with these steps. Repository owner/name/visibility have not been selected; no GitHub repository has been created by this package.
-
-Review the included images and PDF against your repository's asset policy before the initial push. No license is assumed or granted for the project by this starter package.
+Review the included images and PDF against your repository's asset policy before publication. No license is assumed or granted for the project by this starter package.
 
 ## Folder map
 

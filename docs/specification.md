@@ -76,6 +76,12 @@ The first version closes the running application. Opening it again creates a fre
 
 Applications should save meaningful progress during play rather than rely on asynchronous work at exit. A future save-before-close handshake would require a separate agreed protocol and timeout policy.
 
+### Recovery from a stuck experience
+
+No additional launcher recovery control is required when navigation is hidden. If something becomes stuck, refresh the launcher page or close and relaunch the installed PWA. The launcher starts at home with navigation visible and no running experience; it does not automatically reopen the stuck application. Unsaved in-memory progress is lost; previously saved data remains the application's responsibility.
+
+Known unstable experiences are kept out of the launchable catalogue until fixed. This is a catalogue-maintenance decision, not an automatic stability-detection feature. The normal exit-control requirements remain in [api.md](api.md).
+
 ### New tabs and browser Back
 
 An iframe is the normal launch mode. Opening a new tab can be an explicitly labelled fallback for an incompatible external project; it cannot preserve the launcher wrapper or guarantee an automatic return.
@@ -118,6 +124,8 @@ Cross-application continuity is a future extension: an experience might add a fi
 | Immersive request after exit button is ready | Bar hides and content resizes |
 | App requests show or exit | Bar returns or home opens as requested |
 | Next application opens after immersive use | Navigation starts visible |
+| Experience is stuck with navigation hidden | Refreshing the launcher, or closing and relaunching the installed PWA, returns home without reopening the experience; no extra recovery control is required |
+| Experience is known to be unstable | It is kept out of the launchable catalogue until fixed |
 | Message from another window, origin or old session | Ignored |
 | Experience requests `page` | Decorative frame removed; client area used; iframe session and navigation visibility preserved |
 | Experience requests `theme` | Active theme layout restored without restarting the application |
@@ -126,7 +134,7 @@ Cross-application continuity is a future extension: an experience might add a fi
 | User exits native fullscreen | Prior non-fullscreen layout restored and state notification sent |
 | Experience exits after requesting fullscreen | Experience-owned fullscreen and pending requests cleaned up |
 | One manifest or icon is unavailable | Other experiences remain usable |
-| Embedded page is blocked or never becomes ready | French recovery controls remain available; iframe load alone is not proof of success |
+| Embedded page is blocked or never becomes ready | Navigation remains visible unless the experience has validly requested hiding it; loading feedback does not block Home; iframe load alone is not proof of success |
 | Team deploys an update | Available on a later launch after normal cache revalidation; no live interruption |
 | Mobile keyboard or orientation changes | Controls and exit remain reachable |
 | Desktop viewport is short or narrow | Launcher remains usable; active theme adapts |
@@ -136,7 +144,7 @@ Test representative iOS Safari, Android Chrome and desktop browsers, in browser 
 
 ## Remaining design choices
 
-Before implementation, choose the launcher stack, deployment organisation/domain, initial themes, theme contract implementation, compact/wide viewport rule, final visual identity, precise immersive recovery control, and iframe trust/sandbox policy. These do not change the agreed catalogue-and-iframe architecture. Real hardware features, offline experiences, shared data and save-before-close require additional contracts if introduced.
+Before implementation, choose the launcher stack, deployment organisation/domain, initial themes, theme contract implementation, compact/wide viewport rule, final visual identity, and iframe trust/sandbox policy. These do not change the agreed catalogue-and-iframe architecture. Real hardware features, offline experiences, shared data and save-before-close require additional contracts if introduced.
 
 ## Related contracts
 

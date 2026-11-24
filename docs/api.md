@@ -20,7 +20,7 @@ The agreed commands are:
 
 Repeated hide/show requests should be harmless. An exit request uses the same cleanup path as the shell's Home button. No permission prompt or metadata declaration is needed for these commands.
 
-A launcher-owned recovery control was proposed as a resilience measure. Its exact design remains open: it should be discreet, work with touch and keyboard, and restore navigation if an application's exit control fails. A hidden gesture alone is insufficient. Decide the recovery design before claiming that immersive mode always provides a guaranteed escape.
+No additional launcher recovery control is provided when navigation is hidden. If an experience becomes stuck or its exit control fails, the player can refresh the launcher page or close and relaunch the installed PWA to return home. Restarting does not automatically reopen the experience or restore its in-memory state. The experience's own usable exit control remains required for normal operation.
 
 ### Flexible experience display API
 
@@ -88,7 +88,7 @@ This JSON is the message payload, not the complete envelope. The theme receives 
 
 Requesting a mode not in `commonModes` returns `launcher.display.changed` with `status: "error"`, `reason: "mode-not-supported"` and the unchanged effective mode. This must not initiate a pending fullscreen request. A recognised but browser-unavailable fullscreen request uses the negotiated fallback behaviour below. Unknown mode strings remain `invalid-mode` errors.
 
-To give the experience all available client space without the normal navigation bar, combine `page` with `launcher.navigation.hide`, after the experience's exit control is ready. Accessible recovery controls may remain. Browser or operating-system UI and device safe areas cannot be promised away.
+To give the experience all available client space without the normal navigation bar, combine `page` with `launcher.navigation.hide`, after the experience's exit control is ready. Browser or operating-system UI and device safe areas cannot be promised away.
 
 | Message type | Direction | Purpose |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ For changes initiated outside the experience request flow, such as the browser's
 - On experience exit, cancel pending activation, restore navigation and reset display state. If fullscreen was entered for that experience, exit it; preserve any fullscreen session the user had independently established for the launcher before the experience. Track fullscreen ownership separately from the requested application mode.
 - Do not intercept the browser's native exit behaviour or automatically force fullscreen again after the user leaves it.
 
-The launcher owns the native fullscreen element so that its Home and recovery controls remain available. Experience teams request the mode through this API instead of placing only their iframe contents into fullscreen. The same contract applies on mobile where supported, on desktop, across themes and to built-in applications.
+The launcher owns the native fullscreen element so that launcher controls remain within the fullscreen root; Home is shown when navigation is visible. Fullscreen does not change navigation visibility or add a recovery control. Experience teams request the mode through this API instead of placing only their iframe contents into fullscreen. The same contract applies on mobile where supported, on desktop, across themes and to built-in applications.
 
 ## Recommended message protocol and examples
 

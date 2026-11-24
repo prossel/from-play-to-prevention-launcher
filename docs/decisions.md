@@ -18,6 +18,8 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Running apps | Iframe within the launcher; new-tab launch is only an optional fallback. |
 | Exit | Launcher provides Home by default. Experience can request exit through messages. |
 | Navigation | Experience can request hide/show; no redundant immersive metadata capability. |
+| Recovery | No additional launcher recovery control when navigation is hidden. If stuck, refresh the launcher page or close and relaunch the installed PWA to return home. |
+| Unstable experiences | Keep known unstable experiences out of the launchable catalogue until fixed; no automatic stability-detection mechanism is required. |
 | Display | Theme frame, full client page and native browser fullscreen are distinct modes. |
 | Display support | Both theme and experience declare supported modes. |
 | Display control | Theme controls and experience requests are mediated by one core manager. |

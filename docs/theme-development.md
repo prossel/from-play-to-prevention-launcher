@@ -16,6 +16,7 @@ See [architecture.md](architecture.md) for the proposed source layout and [api.m
 - Subscribe to actual display changes, including changes requested by the experience and native fullscreen exits.
 - Provide the expanded layout for page or fullscreen only when declaring support for it. A phone outline or aspect constraint cannot remain compulsory in those modes.
 - Preserve focus, iframe state and a usable route home during layout changes.
+- Follow the [navigation and recovery policy](api.md#optional-immersive-mode): no additional recovery control is required when navigation is hidden.
 - Dispose theme listeners and isolate visual styles when leaving the theme.
 
 ## Selection
