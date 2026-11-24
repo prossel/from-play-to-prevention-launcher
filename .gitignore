@@ -1,0 +1,22 @@
+# Local operating-system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Future generated runtime output
+node_modules/
+dist/
+coverage/
+.cache/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Temporary review output
+tmp/
