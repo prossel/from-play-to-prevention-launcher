@@ -29,11 +29,18 @@ Resolve these progressively in documentation before beginning implementation.
 
 ## Applications and content
 
-- Obtain repository/metadata URLs, owners and actual assets for the six named experiences.
+- Obtain published experience URLs, owners and supplied titles/assets for the six named experiences; metadata URLs are not prerequisites.
 - Which built-in apps are required? Camera, gallery and notes are examples only.
 - Is real camera access needed, or will simulated content suffice?
 - What progress should persist, and how will teams communicate that to players?
 - Who supplies descriptions, categories, credits and any editorial mappings between experiences?
+
+## Catalogue and optional metadata
+
+- Confirm optional `./experience.json` discovery details. Catalogue entries contain only `id` and `url`; names and icons come from page discovery or JSON overrides.
+- Choose bounded HTML-discovery and optional-metadata fetch policies so an unresponsive endpoint cannot delay baseline launching indefinitely. Late declarations must apply only on a later launch.
+
+- Define deterministic favicon candidate selection for multiple sizes, types and media, following standard page icon links before the root favicon fallback.
 
 ## Validation
 

@@ -15,7 +15,9 @@ Baseline consolidated on 24 November 2026. These decisions describe the discussi
 | Launcher ownership | Separate repository, GitHub Pages deployment, optional dedicated domain. |
 | Experience ownership | Independent team repositories and independently deployed static web applications. |
 | Built-in apps | Launcher may host apps in subfolders using the same metadata and iframe contract. |
-| Catalogue | Launcher references metadata endpoints; it does not need to merge team repositories. |
+| Catalogue | Keep catalogue entries to `id` and published folder/page `url`. Discover names and favicons from the page, with optional JSON overrides and safe fallbacks. Experience metadata is optional; no team source repositories are merged. See [integration](experience-integration.md). |
+| Minimum integration | No launcher-specific experience code, SDK or metadata file required. Standalone responsive experiences must permit iframe embedding; baseline display support is `["theme"]`. |
+| Team workflow | Develop independently, fork the launcher, add the published URL to its catalogue, test, then submit the catalogue addition by pull request. |
 | Publication | Push to a dedicated branch such as prod can trigger each site's deployment. |
 | Running apps | Iframe within the launcher; new-tab launch is only an optional fallback. |
 | Loading | Non-blocking “Chargement…” with “Accueil” available. Optional `experience.ready` clears it; otherwise dismiss it after a short delay without claiming success. Identified failures offer “Réessayer” and “Accueil”. Messaging is not required to run. See [specification](specification.md#loading-feedback-and-failures). |

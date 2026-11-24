@@ -36,7 +36,7 @@ No phone frame or other decorative container is mandatory on desktop. An experie
 
 ### Supported modes and launcher mediation
 
-The experience declares `displayModes` in `experience.json`; each trusted theme declares the same field in its module descriptor, for example:
+The experience may declare `displayModes` in optional `experience.json`, as specified by the [catalogue and metadata contract](experience-integration.md#catalogue-and-metadata-contract). Without usable metadata or a display declaration, its resolved support is `["theme"]`. Each trusted theme declares the same field in its module descriptor, for example:
 
 ```js
 export default {
@@ -46,7 +46,7 @@ export default {
 };
 ```
 
-The descriptor field is mandatory for new themes. Arrays must contain recognised, unique mode values. Missing experience declarations default to `["theme"]` for compatibility, not to support for every mode. These display declarations do not introduce an immersive/navigation capability flag: navigation hide/show remains its own existing contract.
+The descriptor field is mandatory for new themes. Arrays must contain recognised, unique mode values. Missing experience declarations default to `["theme"]` for zero-code integration, not to support for every mode. These display declarations do not introduce an immersive/navigation capability flag: navigation hide/show remains its own existing contract.
 
 The core computes:
 

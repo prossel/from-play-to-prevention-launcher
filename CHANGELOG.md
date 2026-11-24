@@ -1,5 +1,26 @@
 # Specification history
 
+## GitHub Pages CORS guidance 2026-11-24
+
+- Clarified that GitHub Pages normally supplies public wildcard CORS access without team configuration and does not support custom response-header configuration directly.
+- Required verification of actual published HTML and optional JSON access, including custom-domain, redirect or proxy responses; limited header-configuration examples to hosts that support them.
+- Updated the minimum and optional team checklists accordingly.
+
+## Minimal catalogue and page discovery decision 2026-11-24
+
+- Reduced catalogue entries to `id` and `url`, removing the title requirement.
+- Defined display-name priority as optional JSON title, page title, then ID fallback; icon priority is JSON override, page icon links, root favicon, then generic fallback.
+- Documented static HTML discovery, cross-origin CORS requirements and graceful fallback without blocking embedding or launch.
+- Aligned team instructions, architecture, decisions and acceptance checks; left detailed favicon candidate selection and bounded discovery timing open.
+
+## Experience team integration workflow 2026-11-24
+
+- Replaced mandatory metadata-endpoint registration with published folder/page URLs; catalogue entries supply stable identity and launch URLs (title registration superseded by the minimal-catalogue decision above).
+- Defined zero-code baseline integration, optional metadata and optional messaging, retaining default `theme` support and iframe compatibility requirements.
+- Documented standalone development, launcher forks, integration testing and catalogue pull requests.
+- Documented CORS for optional JSON separately from iframe embedding and message-origin validation, with hosting examples and troubleshooting.
+- Aligned API defaults, architecture, decisions and acceptance checks; retained proposed schema/discovery details and bounded-fetch timing as open implementation choices.
+
 ## Loading feedback decision 2026-11-24
 
 - Confirmed non-blocking “Chargement…” with “Accueil” available, cleared by optional `experience.ready` or after a short delay without claiming successful loading.

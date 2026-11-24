@@ -27,7 +27,8 @@ The agreed foundation is:
 - The launcher has its own GitHub repository and GitHub Pages deployment, optionally on a dedicated domain.
 - Independent teams own their repositories and publish their own applications, normally through GitHub Pages.
 - Applications hosted in launcher subfolders use the same integration mechanism as external experiences.
-- A catalogue of metadata URLs connects the launcher to its applications.
+- A catalogue registers only stable IDs and published experience folder or page URLs. Names and icons are discovered from the page, with optional metadata overrides. Metadata and launcher messaging are optional; see the [team integration guide](experience-integration.md).
+- Teams develop independently, test integration in a launcher fork and submit their catalogue addition through a pull request.
 
 ## Layout sketches — visual design remains open
 
@@ -75,7 +76,7 @@ Theme switching is separate from changing display mode within the active theme. 
 
 1. The player selects an icon.
 2. The launcher records which icon opened the experience, ensures navigation is visible and displays loading feedback.
-3. It creates a new iframe using the resolved entry URL and an accessible French title.
+3. It creates a new iframe using the resolved entry URL and an accessible title using the resolved experience name, preserving supplied titles.
 4. The experience runs within the available experience area.
 5. The player activates the launcher's “Accueil” button, or the experience requests exit.
 6. The launcher removes the iframe, clears session-specific listeners and state, restores navigation and shows the home screen.
@@ -166,7 +167,12 @@ Cross-application continuity is a future extension: an experience might add a fi
 | User exits native fullscreen | Prior non-fullscreen layout restored and state notification sent |
 | Any display transition, including fullscreen entry, failure or exit | Existing iframe document and application state preserved; navigation visibility unchanged |
 | Experience exits after requesting fullscreen | Experience-owned fullscreen and pending requests cleaned up |
-| One manifest or icon is unavailable | Other experiences remain usable |
+| Optional metadata is missing, invalid, unsupported or blocked by CORS | Registered experience remains launchable with baseline defaults; other experiences remain usable |
+| Icon override is absent or unavailable | Try page icon links, then origin `/favicon.ico`, then the launcher fallback icon |
+| No title override is supplied | Use the readable HTML page title, otherwise the ID as a fallback label |
+| Cross-origin HTML discovery is blocked by CORS | Launch remains usable; readable JSON overrides or ID/root-favicon fallbacks provide presentation |
+| Optional metadata supplies a title or icon | Valid values override page-derived presentation without changing catalogue ID or launch URL |
+| Published folder URL is registered without metadata or messaging | URL is opened directly in the iframe with navigation visible and default `theme` support, subject to shared-mode compatibility |
 | Experience launch starts | Non-blocking “Chargement…” shown with “Accueil” available |
 | Active experience sends a valid `experience.ready` | Loading indicator clears |
 | No ready signal arrives | Indicator clears after a short delay without declaring success or failure; iframe remains running |

@@ -8,7 +8,7 @@ This folder brings together the current specification, API, theme proposals and 
 
 1. Read [decisions](docs/decisions.md) for the agreed direction.
 2. Read the [specification](docs/specification.md) and [architecture](docs/architecture.md).
-3. Review the [API](docs/api.md), [experience integration](docs/experience-integration.md) and [theme guide](docs/theme-development.md).
+3. Experience teams: start with the [minimum integration and fork/PR workflow](docs/experience-integration.md). Review the [API](docs/api.md) only for optional messaging; theme authors should read the [theme guide](docs/theme-development.md).
 4. Use [open questions](docs/open-questions.md) to decide what to refine next.
 5. Browse the [12 theme proposals](docs/design/theme-proposals.md) or the [visual dossier PDF](docs/design/Theme_Explorations.pdf).
 
@@ -40,7 +40,7 @@ Review the included images and PDF against your repository's asset policy before
 | docs/specification.md | Product, lifecycle and acceptance criteria |
 | docs/architecture.md | Core/theme boundaries and proposed future source layout |
 | docs/api.md | Navigation, display negotiation, messages and examples |
-| docs/experience-integration.md | Metadata, publication, embedding and team checklist |
+| docs/experience-integration.md | Team quick start, folder-URL registration, optional features, fork/PR workflow and CORS |
 | docs/theme-development.md | Theme authoring responsibilities |
 | docs/decisions.md | Confirmed direction |
 | docs/open-questions.md | Choices still requiring review |

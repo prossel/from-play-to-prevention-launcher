@@ -10,10 +10,14 @@ The structure below describes future implementation. Only documentation exists i
 | Theme system | Theme selection, home layout, experience frame and navigation rendering | Launcher repository and Pages site |
 | Built-in applications | Camera-inspired app, gallery, notes and other fictional phone tools | Subfolders of the launcher deployment |
 | Independent experiences | Self-contained games or interactive pages | Each team's repository and published site |
-| Application metadata | Identity, icon, French description and entry URL | Published alongside each application |
+| Catalogue | Only stable ID and published folder or page launch URL | Launcher repository |
+| Page discovery | Best-effort HTML title and favicon discovery; safe fallbacks when unreadable | Published experience page |
+| Optional application metadata | Display-title/icon overrides, French description and display support; baseline integration works without it | Optionally published alongside each application |
 | Optional PWA layer | Installation and shell caching | Launcher origin |
 
 Built-in tools can be repurposed for narrative or playful prevention activities. A gallery may contain fictional images; notes may reveal a story; a camera-like interface may offer a simulated activity. Real hardware access is not required by the concept.
+
+The optional metadata files and icons in the proposed tree are illustrative, not required experience deliverables.
 
 Use the same loading code for local and external applications. Hosting location must not change how a player opens or exits them. The first version runs one application at a time.
 
@@ -108,7 +112,7 @@ launcher/
 
 | Folder | Responsibility |
 | --- | --- |
-| `src/core/` | Load and validate metadata, manage the active iframe and navigation state, validate messages and clean up sessions. No theme-specific DOM or imagery. `display.js` owns display state and browser fullscreen transitions. |
+| `src/core/` | Load and validate catalogue entries, page presentation and optional metadata, manage the active iframe and navigation state, validate messages and clean up sessions. No theme-specific DOM or imagery. `display.js` owns display state and browser fullscreen transitions. |
 | `src/theme-system/` | Register trusted theme modules and select the active theme independently from catalogue entries. |
 | `src/themes/<theme-id>/` | Theme-specific home, experience frame, navigation presentation, responsive styles and visual assets. |
 | `src/shared/` | Accessible controls, structural styles and French launcher strings used across themes. |
@@ -123,7 +127,7 @@ launcher/
 
 The core owns exactly one active iframe and its session. Themes render around that host through a common contract: render the home from catalogue data, expose an experience mount area, render navigation from shared state and dispose theme-owned resources. Themes trigger core actions such as launch and exit; they do not create their own iframe lifecycle or bypass message validation. Each theme supplies its own default experience frame, which may already use the full client area. Every theme declares its supported display modes. A theme that supports `page` or `fullscreen` must provide those states without a compulsory phone frame, decorative margins, fixed aspect ratio or maximum-width constraint. Resizing must preserve the existing iframe document and application state.
 
-Keep an application's metadata independent of themes: teams do not create one manifest or build per launcher theme. Any built-in application is listed in the catalogue, not hidden inside a theme directory. Theme icons, backgrounds and decorative objects belong to the theme; application icons belong to the application.
+Keep optional application metadata independent of themes: teams do not create one metadata document or build per launcher theme. Follow the [folder-URL catalogue contract](experience-integration.md#catalogue-and-metadata-contract); missing metadata must not block baseline integration. Any built-in application is listed in the catalogue, not hidden inside a theme directory. Theme icons, backgrounds and decorative objects belong to the theme; application icons belong to the application.
 
 Theme modules run as trusted launcher code, not as experience iframes. The registry imports only themes included in the launcher deployment. Selecting a theme by configuration must not execute arbitrary code from a metadata URL. Remove theme styles and listeners on disposal; scope theme styles to avoid affecting the core or other themes.
 
