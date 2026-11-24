@@ -33,6 +33,6 @@ The common non-fullscreen launch requirement, initial mode priority and fullscre
 
 ## Exploration assets
 
-[Theme proposals](design/theme-proposals.md) include 12 themes, each with sketch, direction A and direction B, all shown on mobile and desktop. These are generated exploratory visuals. Their controls, categories, illustrations and relationships are not implementation commitments.
+[Theme proposals](design/theme-proposals.md) include 13 themes, each with sketch, direction A and direction B, all shown on mobile and desktop. The PDF covers the original twelve. These are generated exploratory visuals. Their controls, categories, illustrations and relationships are not implementation commitments.
 
 The earlier phone sketches and graphical mockups are kept as historical context. Their colours, device framing and example labels do not define current product requirements.

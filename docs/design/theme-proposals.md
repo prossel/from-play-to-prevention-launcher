@@ -1,11 +1,11 @@
 # From Play to Prevention
 ## Modular launcher theme explorations
 
-Visual exploration only. The current display and capability contract is defined in [the API](../api.md). These images predate the latest API changes; never derive behaviour or supported modes from the drawings.
+Visual exploration only. The current display and capability contract is defined in [the API](../api.md). The original twelve boards predate the latest API changes; never derive behaviour or supported modes from the drawings.
 
 24 November 2026
 
-Twelve themes, each with two sketches and two graphical directions, each graphical direction shown on mobile and desktop. 72 views in total. The visual proposals are exploratory; no graphic identity is selected.
+Thirteen themes, each with two sketches and two graphical directions, each graphical direction shown on mobile and desktop. 78 views in total. The PDF covers the original twelve. The visual proposals are exploratory; no graphic identity is selected.
 
 Documentation is in English, interface controls are in French, and experience titles are unchanged.
 
@@ -238,6 +238,24 @@ Entry through perspectives on digital social life: Participer, Observer, Recevoi
 **Direction B:** Graphic multi-window portal: dark indigo, coral and cyan translucent panes, geometric perspectives, bold contemporary type and luminous restrained accents.
 
 ![Portail à plusieurs regards comparison board](assets/12-perspectives.png)
+
+## 13 Style suisse
+
+A typographic index with a precise modular grid, asymmetric hierarchy and neutral geometric accents. No phone framing is proposed.
+
+**Mobile:** A single column of numbered experience rows, readable wrapped titles and generous launch targets.
+
+**Desktop:** A two-column, three-row index with large typography, fine dividers and reserved icon areas.
+
+**Why consider it:** Clear hierarchy and a strong graphic identity make the catalogue easy to scan without relying on invented experience imagery.
+
+**What to test:** Long titles, readable contrast, keyboard focus and catalogue growth. Numbers indicate catalogue order, not ranking or progress; geometric motifs are placeholders for real experience icons.
+
+**Direction A:** Editorial index: warm white, black and vermilion red, restrained geometric accents and the heading “À toi de jouer.”
+
+**Direction B:** Energetic modular grid: white, black, cobalt and acid yellow, bold geometric accents and the heading “Choisis une expérience”.
+
+![Style suisse comparison board](assets/13-swiss-design.png)
 
 ## Workshop discussion
 

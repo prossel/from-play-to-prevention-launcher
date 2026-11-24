@@ -1,5 +1,9 @@
 # Specification history
 
+## Swiss design exploration 2026-11-24
+
+- Added Style suisse as proposal 13 in the existing theme exploration document, with mobile/desktop descriptions and a comparison board following the existing format: sketches, direction A and direction B on mobile and desktop.
+
 ## GitHub Pages CORS guidance 2026-11-24
 
 - Clarified that GitHub Pages normally supplies public wildcard CORS access without team configuration and does not support custom response-header configuration directly.

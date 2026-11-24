@@ -10,7 +10,7 @@ This folder brings together the current specification, API, theme proposals and 
 2. Read the [specification](docs/specification.md) and [architecture](docs/architecture.md).
 3. Experience teams: start with the [minimum integration and fork/PR workflow](docs/experience-integration.md). Review the [API](docs/api.md) only for optional messaging; theme authors should read the [theme guide](docs/theme-development.md).
 4. Use [open questions](docs/open-questions.md) to decide what to refine next.
-5. Browse the [12 theme proposals](docs/design/theme-proposals.md) or the [visual dossier PDF](docs/design/Theme_Explorations.pdf).
+5. Browse the [13 theme proposals](docs/design/theme-proposals.md) or the [original twelve-theme visual dossier PDF](docs/design/Theme_Explorations.pdf).
 
 ## Important distinctions
 
